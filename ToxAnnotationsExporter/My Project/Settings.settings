@@ -1,0 +1,65 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="HideBooksWithoutAnnotations" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CreateSeparateFileForEachBook" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="InsertBookInformation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CreateInlineImages" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExpandMarkedText" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CharactersToExpandMarkedTextBy" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="HighlightOriginalMark" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HtmlExport_CSS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">body { text-align: justify; }
+table, tr, td, th { border-style: solid; border-width: 1px; border-color: #055f9d; border-collapse: collapse; }
+th { text-align: left; vertical-align: top; padding: 5px; }
+td { text-align: justify; vertical-align: top; padding: 5px; }
+p { text-align: justify;  margin: 0; text-indent: 1em; }
+span.AnnotationHighlight { background-color: yellow }</Value>
+    </Setting>
+    <Setting Name="HtmlExport_BookHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[table width='100%']</Value>
+    </Setting>
+    <Setting Name="HtmlExport_BookInformation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr bgcolor='#e0ffff'][th align='left' colspan='3'][font size='+1']%AUTHOR%[/font][br][font size='+2']%TITLE%[/font][br][font size='-1'][i]%FILE_NAME%[/i][/font][/th][/tr]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationsHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr bgcolor='#e0ffff'][th align='center']Page[/th][th align='center' width='50%']Marked Text[/th][th align='center' width='50%']Annotation[/th][/tr]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_Annotation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr][td]%PAGE%[/td][td]%MARKED_TEXT%[/td][td]%ANNOTATION%[/td][/tr]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationHighlightStart" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[span class="AnnotationHighlight"]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationHighlightEnd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[/span]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationsSeparator" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationsNotAvailable" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr][td colspan='3'][i]No annotations available[/i][/td][/tr]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_BookTail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[/table]\n[br][br]</Value>
+    </Setting>
+    <Setting Name="PageNumberDecimalPlaces" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

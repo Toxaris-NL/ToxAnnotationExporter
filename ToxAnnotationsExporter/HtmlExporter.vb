@@ -168,8 +168,8 @@ Public Class HtmlExporter
                 Dim htmlFilePath As [String] = Path.Combine(htmlFilesDir, Path.ChangeExtension(currentBook.FileName, ".html"))
                 Using htmlFile As New StreamWriter(htmlFilePath, False, New UTF8Encoding(True))
                     WriteHtmlHead(htmlFile, exportStyle.CSS, [String].Format("{0} - {1}", currentBook.Author, currentBook.Title))
-                    WriteBookHead(htmlFile, exportStyle.BookHead)
                     WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
+                    WriteBookHead(htmlFile, exportStyle.BookHead)
                     If True = useBookInformation Then
                         WriteBookInformation(htmlFile, exportStyle.BookInformation, currentBook)
                     End If

@@ -16,6 +16,7 @@ Public Class HtmlExporter
         htmlFile.WriteLine("<?xml version=""1.0"" encoding=""utf-8""?>")
         htmlFile.WriteLine("<html>")
         htmlFile.WriteLine("<head>")
+        htmlFile.WriteLine("  <meta charset='UTF-8'>")
         htmlFile.WriteLine([String].Format("<title>{0}</title>", htmlTitle))
         If False = [String].IsNullOrEmpty(css) Then
             htmlFile.WriteLine([String].Format("<style type=""text/css"">" & vbLf & "{0}" & vbLf & "</style>", css))

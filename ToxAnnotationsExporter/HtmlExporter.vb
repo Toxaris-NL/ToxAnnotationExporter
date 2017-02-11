@@ -117,6 +117,12 @@ Public Class HtmlExporter
         End If
     End Sub
 
+    Private Shared Sub WriteScript(htmlFile As StreamWriter, javascript As [String])
+        If False = [String].IsNullOrEmpty(javascript) Then
+            htmlFile.WriteLine([String].Format("<script>" & vbLf & "{0}" & vbLf & "</script>", javascript))
+        End If
+    End Sub
+
     Private Shared Sub ExportToSingleFile(books As List(Of BookInfo), htmlFilePath As [String], useBookInformation As Boolean, useInlineImages As Boolean, pageNumberDecimalPlaces As Integer, exportStyle As HtmlExportStyle)
         Try
             Dim drawingAnnotationCounter As Integer = 0
@@ -143,6 +149,7 @@ Public Class HtmlExporter
                         WriteAnnotationsNotAvailable(htmlFile, exportStyle.AnnotationsNotAvailable)
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
+                    WriteScript(htmlFile, exportStyle.Script)
                 Next
                 WriteHtmlTail(htmlFile)
                 htmlFile.Close()

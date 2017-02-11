@@ -5,6 +5,7 @@ Public Class HtmlExportStyle
 
     Private styleName As [String] = [String].Empty
     Private styleCSS As [String] = [String].Empty
+    Private styleSaveLayer As [String] = [String].Empty
     Private styleBookHead As [String] = [String].Empty
     Private styleBookInformation As [String] = [String].Empty
     Private styleAnnotationsHead As [String] = [String].Empty
@@ -13,6 +14,7 @@ Public Class HtmlExportStyle
     Private styleAnnotationHighlightEnd As [String] = [String].Empty
     Private styleAnnotationsSeparator As [String] = [String].Empty
     Private styleAnnotationsNotAvailable As [String] = [String].Empty
+    Private styleScript As String = [String].Empty
     Private styleBookTail As [String] = [String].Empty
 
     Public Const HTML_EXPORT_STYLE_XML_FILE As [String] = "HtmlExportStyles.xml"
@@ -49,6 +51,15 @@ Public Class HtmlExportStyle
         End Get
         Set(value As [String])
             styleCSS = CorrectCss(Value)
+        End Set
+    End Property
+
+    Public Property SaveLayer() As [String]
+        Get
+            Return styleSaveLayer
+        End Get
+        Set(value As [String])
+            styleSaveLayer = CorrectHtml(value)
         End Set
     End Property
 
@@ -124,6 +135,15 @@ Public Class HtmlExportStyle
         End Set
     End Property
 
+    Public Property Script() As [String]
+        Get
+            Return styleScript
+        End Get
+        Set(value As [String])
+            styleScript = CorrectScript(value)
+        End Set
+    End Property
+
     Public Property BookTail() As [String]
         Get
             Return styleBookTail
@@ -152,6 +172,10 @@ Public Class HtmlExportStyle
 
     Private Function CorrectHtml(value As [String]) As [String]
         Return value.Replace("\n", vbLf).Replace("[", "<").Replace("]", ">").Trim()
+    End Function
+
+    Private Function CorrectScript(value As [String]) As String
+        Return value.Replace("&lt;", "<").Replace("&gt;", ">")
     End Function
 
     Public Overrides Function ToString() As String

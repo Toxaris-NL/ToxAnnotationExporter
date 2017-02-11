@@ -204,6 +204,7 @@ Partial Public Class ToxAnnotationsExporterGUI
             currentExportStyle.Name = "Default"
             currentExportStyle.CSS = My.MySettings.[Default].HtmlExport_CSS
             currentExportStyle.BookHead = My.MySettings.[Default].HtmlExport_BookHead
+            currentExportStyle.SaveLayer = My.Settings.[Default].HtmlExport_SaveLayer
             currentExportStyle.BookInformation = My.MySettings.[Default].HtmlExport_BookInformation
             currentExportStyle.AnnotationsHead = My.MySettings.[Default].HtmlExport_AnnotationsHead
             currentExportStyle.Annotation = My.MySettings.[Default].HtmlExport_Annotation
@@ -211,6 +212,7 @@ Partial Public Class ToxAnnotationsExporterGUI
             currentExportStyle.AnnotationHighlightEnd = My.MySettings.[Default].HtmlExport_AnnotationHighlightEnd
             currentExportStyle.AnnotationsSeparator = My.MySettings.[Default].HtmlExport_AnnotationsSeparator
             currentExportStyle.AnnotationsNotAvailable = My.MySettings.[Default].HtmlExport_AnnotationsNotAvailable
+            currentExportStyle.Script = My.MySettings.[Default].HtmlExport_Script
             currentExportStyle.BookTail = My.MySettings.[Default].HtmlExport_BookTail
 
             exportStyles.Add(currentExportStyle)

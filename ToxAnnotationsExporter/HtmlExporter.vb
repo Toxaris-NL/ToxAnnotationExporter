@@ -16,6 +16,7 @@ Public Class HtmlExporter
         htmlFile.WriteLine("<?xml version=""1.0"" encoding=""utf-8""?>")
         htmlFile.WriteLine("<html>")
         htmlFile.WriteLine("<head>")
+        htmlFile.WriteLine("  <meta charset='UTF-8'>")
         htmlFile.WriteLine([String].Format("<title>{0}</title>", htmlTitle))
         If False = [String].IsNullOrEmpty(css) Then
             htmlFile.WriteLine([String].Format("<style type=""text/css"">" & vbLf & "{0}" & vbLf & "</style>", css))
@@ -28,6 +29,12 @@ Public Class HtmlExporter
         htmlFile.WriteLine("Export made by Annotation Exporter - © Toxaris 2015, Yoths 2012")
         htmlFile.WriteLine("</body>")
         htmlFile.WriteLine("</html>")
+    End Sub
+
+    Private Shared Sub WriteSaveLayer(htmlFile As StreamWriter, template As [String])
+        If False = [String].IsNullOrEmpty(template) Then
+            htmlFile.WriteLine(template)
+        End If
     End Sub
 
     Private Shared Sub WriteBookHead(htmlFile As StreamWriter, template As [String])
@@ -64,7 +71,7 @@ Public Class HtmlExporter
             Select Case annotation.Type
                 Case AnnotationType.HIGHLIGHT
                     If True Then
-                        htmlFile.WriteLine([String].Format(template, annotation.GetPageAsString(pageNumberDecimalPlaces), annotationMark, "&nbsp;"))
+                        htmlFile.WriteLine([String].Format(template, annotation.GetPageAsString(pageNumberDecimalPlaces), annotationMark, ""))
                         Exit Select
                     End If
                 Case AnnotationType.TEXT
@@ -111,12 +118,19 @@ Public Class HtmlExporter
         End If
     End Sub
 
+    Private Shared Sub WriteScript(htmlFile As StreamWriter, javascript As [String])
+        If False = [String].IsNullOrEmpty(javascript) Then
+            htmlFile.WriteLine([String].Format("<script>" & vbLf & "{0}" & vbLf & "</script>", javascript))
+        End If
+    End Sub
+
     Private Shared Sub ExportToSingleFile(books As List(Of BookInfo), htmlFilePath As [String], useBookInformation As Boolean, useInlineImages As Boolean, pageNumberDecimalPlaces As Integer, exportStyle As HtmlExportStyle)
         Try
             Dim drawingAnnotationCounter As Integer = 0
             Using htmlFile As New StreamWriter(htmlFilePath, False, New UTF8Encoding(True))
                 WriteHtmlHead(htmlFile, exportStyle.CSS, Path.GetFileNameWithoutExtension(htmlFilePath))
                 For Each currentBook As BookInfo In books
+                    WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
                     WriteBookHead(htmlFile, exportStyle.BookHead)
                     If True = useBookInformation Then
                         WriteBookInformation(htmlFile, exportStyle.BookInformation, currentBook)
@@ -126,7 +140,7 @@ Public Class HtmlExporter
                         Dim annotationCounter As Integer = 0
                         For Each currentAnnotation As AnnotationInfo In currentBook.Annotations
                             annotationCounter += 1
-                            WriteAnnotation(htmlFile, exportStyle.Annotation, currentAnnotation, useInlineImages, pageNumberDecimalPlaces, htmlFilePath, _
+                            WriteAnnotation(htmlFile, exportStyle.Annotation, currentAnnotation, useInlineImages, pageNumberDecimalPlaces, htmlFilePath,
                                 drawingAnnotationCounter)
                             If annotationCounter < currentBook.Annotations.Count Then
                                 WriteAnnotationsSeparator(htmlFile, exportStyle.AnnotationsSeparator)
@@ -136,6 +150,7 @@ Public Class HtmlExporter
                         WriteAnnotationsNotAvailable(htmlFile, exportStyle.AnnotationsNotAvailable)
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
+                    WriteScript(htmlFile, exportStyle.Script)
                 Next
                 WriteHtmlTail(htmlFile)
                 htmlFile.Close()

@@ -153,7 +153,19 @@ Namespace My
                 Me("HtmlExport_CSS") = value
             End Set
         End Property
-        
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property HtmlExport_SaveLayer() As String
+            Get
+                Return CType(Me("HtmlExport_SaveLayer"), String)
+            End Get
+            Set
+                Me("HtmlExport_SaveLayer") = Value
+            End Set
+        End Property
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("[table width='100%']")>  _
@@ -240,31 +252,43 @@ Namespace My
                 Me("HtmlExport_AnnotationsSeparator") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("[tr][td colspan='3'][i]No annotations available[/i][/td][/tr]")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("[tr][td colspan='3'][i]No annotations available[/i][/td][/tr]")>
         Public Property HtmlExport_AnnotationsNotAvailable() As String
             Get
-                Return CType(Me("HtmlExport_AnnotationsNotAvailable"),String)
+                Return CType(Me("HtmlExport_AnnotationsNotAvailable"), String)
             End Get
             Set
                 Me("HtmlExport_AnnotationsNotAvailable") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("[/table]\n[br][br]")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property HtmlExport_Script() As String
+            Get
+                Return CType(Me("HtmlExport_Script"), String)
+            End Get
+            Set
+                Me("HtmlExport_Script") = Value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("[/table]\n[br][br]")>
         Public Property HtmlExport_BookTail() As String
             Get
-                Return CType(Me("HtmlExport_BookTail"),String)
+                Return CType(Me("HtmlExport_BookTail"), String)
             End Get
             Set
                 Me("HtmlExport_BookTail") = value
             End Set
         End Property
-        
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _

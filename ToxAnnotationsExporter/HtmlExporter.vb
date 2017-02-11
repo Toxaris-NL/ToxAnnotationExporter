@@ -71,7 +71,7 @@ Public Class HtmlExporter
             Select Case annotation.Type
                 Case AnnotationType.HIGHLIGHT
                     If True Then
-                        htmlFile.WriteLine([String].Format(template, annotation.GetPageAsString(pageNumberDecimalPlaces), annotationMark, "&nbsp;"))
+                        htmlFile.WriteLine([String].Format(template, annotation.GetPageAsString(pageNumberDecimalPlaces), annotationMark, ""))
                         Exit Select
                     End If
                 Case AnnotationType.TEXT

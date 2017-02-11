@@ -129,8 +129,8 @@ Public Class HtmlExporter
             Dim drawingAnnotationCounter As Integer = 0
             Using htmlFile As New StreamWriter(htmlFilePath, False, New UTF8Encoding(True))
                 WriteHtmlHead(htmlFile, exportStyle.CSS, Path.GetFileNameWithoutExtension(htmlFilePath))
+                WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
                 For Each currentBook As BookInfo In books
-                    WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
                     WriteBookHead(htmlFile, exportStyle.BookHead)
                     If True = useBookInformation Then
                         WriteBookInformation(htmlFile, exportStyle.BookInformation, currentBook)
@@ -150,8 +150,8 @@ Public Class HtmlExporter
                         WriteAnnotationsNotAvailable(htmlFile, exportStyle.AnnotationsNotAvailable)
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
-                    WriteScript(htmlFile, exportStyle.Script)
                 Next
+                WriteScript(htmlFile, exportStyle.Script)
                 WriteHtmlTail(htmlFile)
                 htmlFile.Close()
             End Using
@@ -169,6 +169,7 @@ Public Class HtmlExporter
                 Using htmlFile As New StreamWriter(htmlFilePath, False, New UTF8Encoding(True))
                     WriteHtmlHead(htmlFile, exportStyle.CSS, [String].Format("{0} - {1}", currentBook.Author, currentBook.Title))
                     WriteBookHead(htmlFile, exportStyle.BookHead)
+                    WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
                     If True = useBookInformation Then
                         WriteBookInformation(htmlFile, exportStyle.BookInformation, currentBook)
                     End If
@@ -187,6 +188,7 @@ Public Class HtmlExporter
                         WriteAnnotationsNotAvailable(htmlFile, exportStyle.AnnotationsNotAvailable)
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
+                    WriteScript(htmlFile, exportStyle.Script)
                     WriteHtmlTail(htmlFile)
                     htmlFile.Close()
                 End Using

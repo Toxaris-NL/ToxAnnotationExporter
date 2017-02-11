@@ -153,7 +153,19 @@ Namespace My
                 Me("HtmlExport_CSS") = value
             End Set
         End Property
-        
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("")>
+        Public Property HtmlExport_SaveLayer() As String
+            Get
+                Return CType(Me("HtmlExport_SaveLayer"), String)
+            End Get
+            Set
+                Me("HtmlExport_SaveLayer") = Value
+            End Set
+        End Property
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("[table width='100%']")>  _

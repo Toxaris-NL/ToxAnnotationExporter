@@ -204,6 +204,7 @@ Partial Public Class ToxAnnotationsExporterGUI
             currentExportStyle.Name = "Default"
             currentExportStyle.CSS = My.MySettings.[Default].HtmlExport_CSS
             currentExportStyle.BookHead = My.MySettings.[Default].HtmlExport_BookHead
+            currentExportStyle.SaveLayer = My.Settings.[Default].HtmlExport_SaveLayer
             currentExportStyle.BookInformation = My.MySettings.[Default].HtmlExport_BookInformation
             currentExportStyle.AnnotationsHead = My.MySettings.[Default].HtmlExport_AnnotationsHead
             currentExportStyle.Annotation = My.MySettings.[Default].HtmlExport_Annotation

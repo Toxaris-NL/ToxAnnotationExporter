@@ -30,6 +30,12 @@ Public Class HtmlExporter
         htmlFile.WriteLine("</html>")
     End Sub
 
+    Private Shared Sub WriteSaveLayer(htmlFile As StreamWriter, template As [String])
+        If False = [String].IsNullOrEmpty(template) Then
+            htmlFile.WriteLine(template)
+        End If
+    End Sub
+
     Private Shared Sub WriteBookHead(htmlFile As StreamWriter, template As [String])
         If False = [String].IsNullOrEmpty(template) Then
             htmlFile.WriteLine(template)
@@ -117,6 +123,7 @@ Public Class HtmlExporter
             Using htmlFile As New StreamWriter(htmlFilePath, False, New UTF8Encoding(True))
                 WriteHtmlHead(htmlFile, exportStyle.CSS, Path.GetFileNameWithoutExtension(htmlFilePath))
                 For Each currentBook As BookInfo In books
+                    WriteSaveLayer(htmlFile, exportStyle.SaveLayer)
                     WriteBookHead(htmlFile, exportStyle.BookHead)
                     If True = useBookInformation Then
                         WriteBookInformation(htmlFile, exportStyle.BookInformation, currentBook)
@@ -126,7 +133,7 @@ Public Class HtmlExporter
                         Dim annotationCounter As Integer = 0
                         For Each currentAnnotation As AnnotationInfo In currentBook.Annotations
                             annotationCounter += 1
-                            WriteAnnotation(htmlFile, exportStyle.Annotation, currentAnnotation, useInlineImages, pageNumberDecimalPlaces, htmlFilePath, _
+                            WriteAnnotation(htmlFile, exportStyle.Annotation, currentAnnotation, useInlineImages, pageNumberDecimalPlaces, htmlFilePath,
                                 drawingAnnotationCounter)
                             If annotationCounter < currentBook.Annotations.Count Then
                                 WriteAnnotationsSeparator(htmlFile, exportStyle.AnnotationsSeparator)

@@ -14,7 +14,6 @@ Public Class HtmlExportStyle
     Private styleAnnotationHighlightEnd As [String] = [String].Empty
     Private styleAnnotationsSeparator As [String] = [String].Empty
     Private styleAnnotationsNotAvailable As [String] = [String].Empty
-    Private styleScript As String = [String].Empty
     Private styleBookTail As [String] = [String].Empty
 
     Public Const HTML_EXPORT_STYLE_XML_FILE As [String] = "HtmlExportStyles.xml"
@@ -132,15 +131,6 @@ Public Class HtmlExportStyle
         End Get
         Set(value As [String])
             styleAnnotationsNotAvailable = CorrectHtml(Value)
-        End Set
-    End Property
-
-    Public Property Script() As [String]
-        Get
-            Return styleScript
-        End Get
-        Set(value As [String])
-            styleScript = CorrectScript(value)
         End Set
     End Property
 

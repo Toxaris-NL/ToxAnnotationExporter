@@ -118,9 +118,14 @@ Public Class HtmlExporter
         End If
     End Sub
 
-    Private Shared Sub WriteScript(htmlFile As StreamWriter, javascript As [String])
-        If False = [String].IsNullOrEmpty(javascript) Then
-            htmlFile.WriteLine([String].Format("<script>" & vbLf & "{0}" & vbLf & "</script>", javascript))
+    Private Shared Sub WriteScript(htmlFile As StreamWriter)
+        Dim scriptFile As String = ".\Resources\script.js"
+        If File.Exists(scriptFile) Then
+            Dim scriptContent As String
+            scriptContent = File.ReadAllText(scriptFile)
+            If False = [String].IsNullOrEmpty(scriptContent) Then
+                htmlFile.WriteLine([String].Format("<script>" & vbLf & "{0}" & vbLf & "</script>", scriptContent))
+            End If
         End If
     End Sub
 
@@ -151,12 +156,12 @@ Public Class HtmlExporter
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
                 Next
-                WriteScript(htmlFile, exportStyle.Script)
+                WriteScript(htmlFile)
                 WriteHtmlTail(htmlFile)
                 htmlFile.Close()
             End Using
         Catch ex As Exception
-            Dim errorText As [String] = [String].Format("Error exporting annotations to HTML file: {0}", ex.Message)
+            Dim errorText As [String] = [String].Format("Error exporting annotations to HTML file:  {0}", ex.Message)
             MetroFramework.MetroMessageBox.Show(ToxAnnotationsExporterGUI, errorText, "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
         End Try
     End Sub
@@ -188,7 +193,7 @@ Public Class HtmlExporter
                         WriteAnnotationsNotAvailable(htmlFile, exportStyle.AnnotationsNotAvailable)
                     End If
                     WriteBookTail(htmlFile, exportStyle.BookTail)
-                    WriteScript(htmlFile, exportStyle.Script)
+                    WriteScript(htmlFile)
                     WriteHtmlTail(htmlFile)
                     htmlFile.Close()
                 End Using

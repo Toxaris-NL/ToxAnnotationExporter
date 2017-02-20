@@ -267,18 +267,6 @@ Namespace My
 
         <Global.System.Configuration.UserScopedSettingAttribute(),
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.Configuration.DefaultSettingValueAttribute("")>
-        Public Property HtmlExport_Script() As String
-            Get
-                Return CType(Me("HtmlExport_Script"), String)
-            End Get
-            Set
-                Me("HtmlExport_Script") = Value
-            End Set
-        End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(),
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.Configuration.DefaultSettingValueAttribute("[/table]\n[br][br]")>
         Public Property HtmlExport_BookTail() As String
             Get

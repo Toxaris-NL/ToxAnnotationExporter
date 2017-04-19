@@ -10,18 +10,13 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-[Xx]64/
-[Xx]86/
-[Bb]uild/
-bld/
-[Bb]in/
-[Oo]bj/
-[Tt]estfiles/
+# Ignore Build results, but do not ignore Resource files
+
+ToxAnnotationsExporter/obj/*
+ToxAnnotationsExporter/bin/*
+!ToxAnnotationsExporter/bin/Debug/
+ToxAnnotationsExporter/bin/Debug/*
+!ToxAnnotationsExporter/bin/Debug/Resources/
 
 # Visual Studio 2015 cache/options directory
 .vs/

@@ -5,6 +5,7 @@ Public Class HtmlExportStyle
 
     Private styleName As [String] = [String].Empty
     Private styleCSS As [String] = [String].Empty
+    Private styleSaveLayer As [String] = [String].Empty
     Private styleBookHead As [String] = [String].Empty
     Private styleBookInformation As [String] = [String].Empty
     Private styleAnnotationsHead As [String] = [String].Empty
@@ -49,6 +50,15 @@ Public Class HtmlExportStyle
         End Get
         Set(value As [String])
             styleCSS = CorrectCss(Value)
+        End Set
+    End Property
+
+    Public Property SaveLayer() As [String]
+        Get
+            Return styleSaveLayer
+        End Get
+        Set(value As [String])
+            styleSaveLayer = CorrectHtml(value)
         End Set
     End Property
 
@@ -152,6 +162,10 @@ Public Class HtmlExportStyle
 
     Private Function CorrectHtml(value As [String]) As [String]
         Return value.Replace("\n", vbLf).Replace("[", "<").Replace("]", ">").Trim()
+    End Function
+
+    Private Function CorrectScript(value As [String]) As String
+        Return value.Replace("&lt;", "<").Replace("&gt;", ">")
     End Function
 
     Public Overrides Function ToString() As String

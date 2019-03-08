@@ -23,25 +23,8 @@
     <Setting Name="HighlightOriginalMark" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="HtmlExport_CSS" Type="System.String" Scope="User">
-      <Value Profile="(Default)">body { text-align: justify; }
-table, tr, td, th { border-style: solid; border-width: 1px; border-color: #055f9d; border-collapse: collapse; }
-th { text-align: left; vertical-align: top; padding: 5px; }
-td { text-align: justify; vertical-align: top; padding: 5px; }
-p { text-align: justify;  margin: 0; text-indent: 1em; }
-span.AnnotationHighlight { background-color: yellow }</Value>
-    </Setting>
-    <Setting Name="HtmlExport_BookHead" Type="System.String" Scope="User">
-      <Value Profile="(Default)">[table width='100%']</Value>
-    </Setting>
     <Setting Name="HtmlExport_BookInformation" Type="System.String" Scope="User">
       <Value Profile="(Default)">[tr bgcolor='#e0ffff'][th align='left' colspan='3'][font size='+1']%AUTHOR%[/font][br][font size='+2']%TITLE%[/font][br][font size='-1'][i]%FILE_NAME%[/i][/font][/th][/tr]</Value>
-    </Setting>
-    <Setting Name="HtmlExport_AnnotationsHead" Type="System.String" Scope="User">
-      <Value Profile="(Default)">[tr bgcolor='#e0ffff'][th align='center']Page[/th][th align='center' width='50%']Marked Text[/th][th align='center' width='50%']Annotation[/th][/tr]</Value>
-    </Setting>
-    <Setting Name="HtmlExport_Annotation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">[tr][td]%PAGE%[/td][td]%MARKED_TEXT%[/td][td]%ANNOTATION%[/td][/tr]</Value>
     </Setting>
     <Setting Name="HtmlExport_AnnotationHighlightStart" Type="System.String" Scope="User">
       <Value Profile="(Default)">[span class="AnnotationHighlight"]</Value>
@@ -60,6 +43,29 @@ span.AnnotationHighlight { background-color: yellow }</Value>
     </Setting>
     <Setting Name="PageNumberDecimalPlaces" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="HtmlExport_CSS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">body { text-align: justify; }
+#annotationsTable { margin-top: 40px; }
+#saveLayer { display:none; position: fixed; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; background-color: #7f93c4; color: #FFFFFF; text-align: center; }
+#saveLayer a { color: #FFFFFF; }
+table, tr, td, th { border-style: solid; border-width: 1px; border-color: #055f9d; border-collapse: collapse; }
+th { text-align: left; vertical-align: top; padding: 5px; }
+td { text-align: justify; vertical-align: top; padding: 5px; }
+p { text-align: justify;  margin: 0; text-indent: 1em; }
+span.AnnotationHighlight { background-color: yellow }</Value>
+    </Setting>
+    <Setting Name="HtmlExport_SaveLayer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[div id="saveLayer"]The contents of the annotations have been modified, do you wish to [a id="saveLink" href="javascript:save()"]save the changes (download new file)[/a] or [a id="discardLink" href="javascript:discard()"]discard them (reload the page)[/a]?[/div]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_BookHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[table id="annotationsTable" width='100%']</Value>
+    </Setting>
+    <Setting Name="HtmlExport_AnnotationsHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr bgcolor='#e0ffff'][th align='center' style='width:2%']Page[/th][th align='center' style='width:49%']Marked Text[/th][th align='center' style='width:49%']Annotation[/th][/tr]</Value>
+    </Setting>
+    <Setting Name="HtmlExport_Annotation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[tr][td]%PAGE%[/td][td]%MARKED_TEXT%[/td][td contenteditable="true"]%ANNOTATION%[/td][/tr]</Value>
     </Setting>
   </Settings>
 </SettingsFile>

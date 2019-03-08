@@ -1,6 +1,7 @@
-
 Public Class HtmlExportStyle
+
 #Region "Private members"
+
     '      ===============
 
     Private styleName As [String] = [String].Empty
@@ -21,6 +22,7 @@ Public Class HtmlExportStyle
     Public Const XML_ATTRIBUTE_HTML_EXPORT_STYLE_NAME As [String] = "name"
     Public Const XML_ELEMENT_CSS As [String] = "CSS"
     Public Const XML_ELEMENT_BOOK_HEAD As [String] = "BookHead"
+    Public Const XML_ELEMENT_SAVE_LAYER As String = "SaveLayer"
     Public Const XML_ELEMENT_BOOK_INFORMATION As [String] = "BookInformation"
     Public Const XML_ELEMENT_ANNOTATIONS_HEAD As [String] = "AnnotationsHead"
     Public Const XML_ELEMENT_ANNOTATION As [String] = "Annotation"
@@ -33,6 +35,7 @@ Public Class HtmlExportStyle
 #End Region
 
 #Region "Fields"
+
     '      ======
 
     Public Property Name() As [String]
@@ -40,7 +43,7 @@ Public Class HtmlExportStyle
             Return styleName
         End Get
         Set(value As [String])
-            styleName = CorrectHtml(Value)
+            styleName = CorrectHtml(value)
         End Set
     End Property
 
@@ -49,7 +52,7 @@ Public Class HtmlExportStyle
             Return styleCSS
         End Get
         Set(value As [String])
-            styleCSS = CorrectCss(Value)
+            styleCSS = CorrectCss(value)
         End Set
     End Property
 
@@ -67,7 +70,7 @@ Public Class HtmlExportStyle
             Return styleBookHead
         End Get
         Set(value As [String])
-            styleBookHead = CorrectHtml(Value)
+            styleBookHead = CorrectHtml(value)
         End Set
     End Property
 
@@ -76,7 +79,7 @@ Public Class HtmlExportStyle
             Return styleBookInformation
         End Get
         Set(value As [String])
-            styleBookInformation = CorrectHtml(Value)
+            styleBookInformation = CorrectHtml(value)
         End Set
     End Property
 
@@ -85,7 +88,7 @@ Public Class HtmlExportStyle
             Return styleAnnotationsHead
         End Get
         Set(value As [String])
-            styleAnnotationsHead = CorrectHtml(Value)
+            styleAnnotationsHead = CorrectHtml(value)
         End Set
     End Property
 
@@ -94,7 +97,7 @@ Public Class HtmlExportStyle
             Return styleAnnotation
         End Get
         Set(value As [String])
-            styleAnnotation = CorrectHtml(Value)
+            styleAnnotation = CorrectHtml(value)
         End Set
     End Property
 
@@ -103,7 +106,7 @@ Public Class HtmlExportStyle
             Return styleAnnotationHighlightStart
         End Get
         Set(value As [String])
-            styleAnnotationHighlightStart = CorrectHtml(Value)
+            styleAnnotationHighlightStart = CorrectHtml(value)
         End Set
     End Property
 
@@ -112,7 +115,7 @@ Public Class HtmlExportStyle
             Return styleAnnotationHighlightEnd
         End Get
         Set(value As [String])
-            styleAnnotationHighlightEnd = CorrectHtml(Value)
+            styleAnnotationHighlightEnd = CorrectHtml(value)
         End Set
     End Property
 
@@ -121,7 +124,7 @@ Public Class HtmlExportStyle
             Return styleAnnotationsSeparator
         End Get
         Set(value As [String])
-            styleAnnotationsSeparator = CorrectHtml(Value)
+            styleAnnotationsSeparator = CorrectHtml(value)
         End Set
     End Property
 
@@ -130,7 +133,7 @@ Public Class HtmlExportStyle
             Return styleAnnotationsNotAvailable
         End Get
         Set(value As [String])
-            styleAnnotationsNotAvailable = CorrectHtml(Value)
+            styleAnnotationsNotAvailable = CorrectHtml(value)
         End Set
     End Property
 
@@ -139,13 +142,14 @@ Public Class HtmlExportStyle
             Return styleBookTail
         End Get
         Set(value As [String])
-            styleBookTail = CorrectHtml(Value)
+            styleBookTail = CorrectHtml(value)
         End Set
     End Property
 
 #End Region
 
 #Region "Constructors"
+
     '      ============
 
     Public Sub New()
@@ -154,6 +158,7 @@ Public Class HtmlExportStyle
 #End Region
 
 #Region "Methods"
+
     '      =======
 
     Private Function CorrectCss(value As [String]) As [String]
@@ -173,4 +178,5 @@ Public Class HtmlExportStyle
     End Function
 
 #End Region
+
 End Class

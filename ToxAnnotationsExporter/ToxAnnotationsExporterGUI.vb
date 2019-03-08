@@ -144,6 +144,10 @@ Partial Public Class ToxAnnotationsExporterGUI
                                         If currentExportStyle IsNot Nothing Then
                                             currentExportStyle.BookHead = reader.ReadElementString()
                                         End If
+                                    ElseIf HtmlExportStyle.XML_ELEMENT_SAVE_LAYER.ToLower() = reader.Name.ToLower() Then
+                                        If currentExportStyle IsNot Nothing Then
+                                            currentExportStyle.SaveLayer = reader.ReadElementString()
+                                        End If
                                     ElseIf HtmlExportStyle.XML_ELEMENT_BOOK_INFORMATION.ToLower() = reader.Name.ToLower() Then
                                         If currentExportStyle IsNot Nothing Then
                                             currentExportStyle.BookInformation = reader.ReadElementString()
@@ -204,7 +208,7 @@ Partial Public Class ToxAnnotationsExporterGUI
             currentExportStyle.Name = "Default"
             currentExportStyle.CSS = My.MySettings.[Default].HtmlExport_CSS
             currentExportStyle.BookHead = My.MySettings.[Default].HtmlExport_BookHead
-            currentExportStyle.SaveLayer = My.Settings.[Default].HtmlExport_SaveLayer
+            currentExportStyle.SaveLayer = My.MySettings.[Default].HtmlExport_SaveLayer
             currentExportStyle.BookInformation = My.MySettings.[Default].HtmlExport_BookInformation
             currentExportStyle.AnnotationsHead = My.MySettings.[Default].HtmlExport_AnnotationsHead
             currentExportStyle.Annotation = My.MySettings.[Default].HtmlExport_Annotation
@@ -308,35 +312,34 @@ Partial Public Class ToxAnnotationsExporterGUI
             End If
         End If
 
-            memoryDrive = [String].Empty
-            memoryType__1 = MemoryType.UNKNOWN
-            If comboboxMicroSdCard.SelectedItem IsNot Nothing Then
-                If TypeOf comboboxMicroSdCard.SelectedItem Is StorageDriveInfo Then
-                    memoryDrive = DirectCast(comboboxMicroSdCard.SelectedItem, StorageDriveInfo).DrivePath
-                    memoryType__1 = MemoryType.SDCARD
-                ElseIf TypeOf comboboxMicroSdCard.SelectedItem Is [String] Then
-                    memoryDrive = DirectCast(comboboxMicroSdCard.SelectedItem, [String])
-                    memoryType__1 = MemoryType.UNKNOWN
-                End If
-            Else
-                memoryDrive = comboboxMicroSdCard.Text.Trim()
+        memoryDrive = [String].Empty
+        memoryType__1 = MemoryType.UNKNOWN
+        If comboboxMicroSdCard.SelectedItem IsNot Nothing Then
+            If TypeOf comboboxMicroSdCard.SelectedItem Is StorageDriveInfo Then
+                memoryDrive = DirectCast(comboboxMicroSdCard.SelectedItem, StorageDriveInfo).DrivePath
+                memoryType__1 = MemoryType.SDCARD
+            ElseIf TypeOf comboboxMicroSdCard.SelectedItem Is [String] Then
+                memoryDrive = DirectCast(comboboxMicroSdCard.SelectedItem, [String])
                 memoryType__1 = MemoryType.UNKNOWN
             End If
-            If False = [String].IsNullOrEmpty(memoryDrive) Then
+        Else
+            memoryDrive = comboboxMicroSdCard.Text.Trim()
+            memoryType__1 = MemoryType.UNKNOWN
+        End If
+        If False = [String].IsNullOrEmpty(memoryDrive) Then
             If DirectCast(comboboxMicroSdCard.SelectedItem, StorageDriveInfo).DriveBrand = "Sony" Then
                 prsT1.StorageLocations.Add(New StorageInfo(memoryType__1, memoryDrive))
             Else
                 kobo.StorageLocations.Add(New StorageInfo(memoryType__1, memoryDrive))
             End If
-            End If
+        End If
         ReaderBrand = DirectCast(comboboxInternalMemory.SelectedItem, StorageDriveInfo).DriveBrand
         prsT1.LoadBooksInfo()
         kobo.LoadBooksInfo()
         RefreshBooks()
 
-            System.Windows.Forms.Cursor.Current = Cursors.[Default]
+        System.Windows.Forms.Cursor.Current = Cursors.[Default]
     End Sub
-
 
     Private Sub checkboxHideBooksWithoutAnnotations_CheckedChanged(sender As Object, e As EventArgs) Handles checkboxHideBooksWithoutAnnotations.CheckedChanged
         System.Windows.Forms.Cursor.Current = Cursors.WaitCursor
@@ -505,7 +508,6 @@ Partial Public Class ToxAnnotationsExporterGUI
         End If
     End Sub
 
-
     Private Sub comboboxInternalMemoryAndMicroSdCard_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboboxInternalMemory.SelectedIndexChanged
         If TypeOf sender Is ComboBox Then
             Dim combobox As ComboBox = DirectCast(sender, ComboBox)
@@ -596,7 +598,6 @@ Partial Public Class ToxAnnotationsExporterGUI
         End If
     End Sub
 
-
     Private Sub linklabelAbout_Click(sender As Object, e As EventArgs) Handles linklabelAbout.Click
         Dim version As String = My.Application.Info.Version.ToString
         Dim infoText As [String] = "FREEWARE, © 2015 Toxaris" & vbLf & "Original version © 2012 by Yoths" _
@@ -615,7 +616,6 @@ Partial Public Class ToxAnnotationsExporterGUI
         Dim Location As List(Of StorageInfo)
         Dim memoryDrive As [String] = [String].Empty
         Dim memoryType__1 As MemoryType = MemoryType.UNKNOWN
-
 
         If ReaderBrand = "Sony" Then
             books = prsT1.BooksForExportAnnotations
@@ -637,4 +637,5 @@ Partial Public Class ToxAnnotationsExporterGUI
             MetroFramework.MetroMessageBox.Show(Me, "No book(s) selected. Removal of annotations possible.", "Unable to remove", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
 End Class

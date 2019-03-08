@@ -1,0 +1,22 @@
+<HtmlExportStyle name="Default">
+	<CSS>body { text-align: justify; }
+		#annotationsTable { margin-top: 40px; }
+		#saveLayer { display:none; position: fixed; top: 0; left: 0; width: 100%; margin: 0; padding: 10px; background-color: #7f93c4; color: #FFFFFF; text-align: center; }
+		#saveLayer a { color: #FFFFFF; }
+		table, tr, td, th { border-style: solid; border-width: 1px; border-color: #055f9d; border-collapse: collapse; }
+		th { text-align: left; vertical-align: top; padding: 5px; }
+		td { text-align: justify; vertical-align: top; padding: 5px; }
+		p { text-align: justify;  margin: 0; text-indent: 1em; }
+		span.AnnotationHighlight { background-color: yellow }</CSS>
+	<BookHead>[table id="annotationsTable" width='100%']</BookHead>
+	<SaveLayer>[div id="saveLayer"]The contents of the annotations have been modified, do you wish to [a id="saveLink" href="javascript:save()"]save the changes (download new file)[/a] or [a id="discardLink" href="javascript:discard()"]discard them (reload the page)[/a]?[/div]</SaveLayer>
+	<BookInformation>[tr bgcolor='#e0ffff'][th align='left' colspan='3'][font size='+1']%AUTHOR%[/font][br][font size='+2']%TITLE%[/font][br][font size='-1'][i]%FILE_NAME%[/i][/font][/th][/tr]</BookInformation>
+	<AnnotationsHead>[tr bgcolor='#e0ffff'][th align='center' style='width:2%']Page[/th][th align='center' style='width:49%']Marked Text[/th][th align='center' style='width:49%']Annotation[/th][/tr]</AnnotationsHead>
+	<Annotation>[tr][td]%PAGE%[/td][td]%MARKED_TEXT%[/td][td contenteditable="true"]%ANNOTATION%[/td][/tr]</Annotation>
+	<AnnotationHighlightStart>[span class="AnnotationHighlight"]</AnnotationHighlightStart>
+	<AnnotationHighlightEnd>[/span]</AnnotationHighlightEnd>
+	<AnnotationsSeparator></AnnotationsSeparator>
+	<AnnotationsNotAvailable>[tr][td colspan='3'][i]No annotations available[/i][/td][/tr]</AnnotationsNotAvailable>
+	<BookTail>[/table]\n[br][br]</BookTail>
+</HtmlExportStyle>
+
